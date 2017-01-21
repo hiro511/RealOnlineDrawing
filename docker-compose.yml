@@ -1,0 +1,19 @@
+mysql:
+  image: "dnhsoft/mysql-utf8"
+  command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+  container_name: "mysql"
+  environment:
+   - MYSQL_ROOT_PASSWORD=password
+   - MYSQL_DATABASE=fuel_db
+  volumes:
+   - "$PWD/mysql/initdb:/docker-entrypoint-initdb.d"
+fuelphp:
+  image: hiro511/fuelphp
+  container_name: "fuel"
+  ports:
+   - "80:80"
+  volumes:
+   - "$PWD/src/app:/var/www/html/fuel/fuel/app"
+   - "$PWD/src/public:/var/www/html/fuel/public"
+  links:
+   - "mysql"
