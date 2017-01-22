@@ -13,7 +13,7 @@ fuelphp:
   ports:
    - "80:80"
   volumes:
-   - "$PWD/src/app:/var/www/html/fuel/fuel/app"
-   - "$PWD/src/public:/var/www/html/fuel/public"
+   - "$PWD/fuel/src/app:/var/www/html/fuel/fuel/app"
+   - "$PWD/fuel/src/public:/var/www/html/fuel/public"
   links:
    - "mysql"
